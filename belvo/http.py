@@ -6,6 +6,7 @@ from requests import HTTPError, Session
 from belvo import __version__
 from belvo.exceptions import RequestError
 
+
 logger = logging.getLogger(__name__)
 
 

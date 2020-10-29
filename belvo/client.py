@@ -2,20 +2,7 @@ import os
 
 from .exceptions import BelvoAPIException
 from .http import APISession
-from .resources import (
-    Accounts,
-    Balances,
-    Incomes,
-    Institutions,
-    Invoices,
-    Links,
-    Owners,
-    Statements,
-    TaxReturns,
-    TaxStatus,
-    Transactions,
-    WidgetToken,
-)
+from .resources import *
 
 
 class Client:

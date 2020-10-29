@@ -4,20 +4,7 @@ import pytest
 from freezegun import freeze_time
 
 from belvo.enums import AccessMode
-from belvo.resources import (
-    Accounts,
-    Balances,
-    Incomes,
-    Institutions,
-    Invoices,
-    Links,
-    Owners,
-    Statements,
-    TaxReturns,
-    TaxStatus,
-    Transactions,
-    WidgetToken,
-)
+from belvo.resources import *
 
 
 def test_links_create_sends_token_if_given(api_session):
@@ -136,7 +123,7 @@ def test_links_create_sends_username_type_if_given(api_session):
 
 
 def test_links_create_with_key_cert(api_session):
-    with patch("belvo.resources.read_file_to_b64") as mocked_b64:
+    with patch("belvo.resources.links.read_file_to_b64") as mocked_b64:
         mocked_b64.return_value = "123b64file123"
         links = Links(api_session)
         links.session.post = MagicMock()
@@ -436,14 +423,14 @@ def test_account_resume(api_session):
 def test_tax_returns_create(api_session):
     tax_returns = TaxReturns(api_session)
     tax_returns.session.post = MagicMock()
-    tax_returns.create("fake-link-uuid", 2019, 2019, attach_pdf=True)
+    tax_returns.create("fake-link-uuid", "2019", "2019", attach_pdf=True)
 
     tax_returns.session.post.assert_called_with(
         "/api/tax-returns/",
         data={
             "link": "fake-link-uuid",
-            "year_from": 2019,
-            "year_to": 2019,
+            "year_from": "2019",
+            "year_to": "2019",
             "attach_pdf": True,
             "save_data": True,
         },
