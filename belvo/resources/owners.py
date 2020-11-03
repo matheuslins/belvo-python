@@ -1,6 +1,6 @@
-from typing import Union, List, Dict
+from typing import Dict, List, Union
 
-from belvo.base_resource import Resource
+from belvo.resources.base import Resource
 
 
 class Owners(Resource):

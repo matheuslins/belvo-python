@@ -1,7 +1,7 @@
 from datetime import date
-from typing import Union, List, Dict
+from typing import Dict, List, Union
 
-from belvo.base_resource import Resource
+from belvo.resources.base import Resource
 
 
 class TaxReturns(Resource):
@@ -20,7 +20,7 @@ class TaxReturns(Resource):
         **kwargs: Dict,
     ) -> Union[List[Dict], Dict]:
 
-        year_to = year_to or date.today().year
+        year_to = year_to or str(date.today().year)
 
         data = {
             "link": link,

@@ -1,6 +1,6 @@
-from typing import Union, List, Dict, Generator
+from typing import Dict, Generator, List, Union
 
-from belvo.base_resource import Resource
+from belvo.resources.base import Resource
 
 
 class Incomes(Resource):

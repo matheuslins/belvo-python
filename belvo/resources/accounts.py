@@ -1,6 +1,6 @@
 from typing import Dict, List, Union
 
-from belvo.base_resource import Resource
+from belvo.resources.base import Resource
 
 
 class Accounts(Resource):
