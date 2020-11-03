@@ -29,7 +29,7 @@ class Balances(Resource):
             "save_data": save_data,
             "account": account,
             "token": token,
-            "encryption_key": encryption_key
+            "encryption_key": encryption_key,
         }
 
         return self.session.post(

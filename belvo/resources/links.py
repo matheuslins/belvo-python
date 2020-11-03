@@ -3,7 +3,7 @@ from typing import Dict, List, Optional, Union
 
 from belvo.enums import AccessMode
 from belvo.resources.base import Resource
-from belvo.utils import read_file_to_b64, clean_none_values
+from belvo.utils import clean_none_values, read_file_to_b64
 
 
 class Links(Resource):
@@ -42,7 +42,9 @@ class Links(Resource):
             "private_key": private_key and read_file_to_b64(private_key),
         }
 
-        return self.session.post(self.endpoint, data=clean_none_values(data), raise_exception=raise_exception)
+        return self.session.post(
+            self.endpoint, data=clean_none_values(data), raise_exception=raise_exception
+        )
 
     def update(
         self,

@@ -22,7 +22,7 @@ class Owners(Resource):
             "link": link,
             "save_data": save_data,
             "token": token,
-            "encryption_key": encryption_key
+            "encryption_key": encryption_key,
         }
 
         return self.session.post(

@@ -28,7 +28,7 @@ class Statements(Resource):
             "month": month,
             "attach_pdf": attach_pdf,
             "save_data": save_data,
-            "encryption_key": encryption_key
+            "encryption_key": encryption_key,
         }
 
         return self.session.post(

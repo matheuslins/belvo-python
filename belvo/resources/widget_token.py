@@ -24,4 +24,6 @@ class WidgetToken(Resource):
             "link": link,
         }
 
-        return self.session.post(self.endpoint, data=clean_none_values(data), raise_exception=raise_exception)
+        return self.session.post(
+            self.endpoint, data=clean_none_values(data), raise_exception=raise_exception
+        )

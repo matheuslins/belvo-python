@@ -29,7 +29,7 @@ class TaxReturns(Resource):
             "year_to": year_to,
             "attach_pdf": attach_pdf,
             "save_data": save_data,
-            "encryption_key": encryption_key
+            "encryption_key": encryption_key,
         }
 
         return self.session.post(
