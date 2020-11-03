@@ -2,6 +2,7 @@ from datetime import date
 from typing import Dict, List, Union
 
 from belvo.resources.base import Resource
+from belvo.utils import clean_none_values
 
 
 class Transactions(Resource):
@@ -21,17 +22,16 @@ class Transactions(Resource):
         **kwargs: Dict,
     ) -> Union[List[Dict], Dict]:
 
-        date_to = date_to or date.today().isoformat()
-
-        data = {"link": link, "date_from": date_from, "date_to": date_to, "save_data": save_data}
-
-        if account:
-            data.update(account=account)
-        if token:
-            data.update(token=token)
-        if encryption_key:
-            data.update(encryption_key=encryption_key)
+        data = {
+            "link": link,
+            "date_from": date_from,
+            "date_to": date_to or date.today().isoformat(),
+            "save_data": save_data,
+            "account": account,
+            "token": token,
+            "encryption_key": encryption_key,
+        }
 
         return self.session.post(
-            self.endpoint, data=data, raise_exception=raise_exception, **kwargs
+            self.endpoint, data=clean_none_values(data), raise_exception=raise_exception, **kwargs
         )

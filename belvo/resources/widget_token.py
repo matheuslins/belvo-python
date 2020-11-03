@@ -1,6 +1,7 @@
 from typing import Optional
 
 from belvo.resources.base import Resource
+from belvo.utils import clean_none_values
 
 
 class WidgetToken(Resource):
@@ -20,9 +21,7 @@ class WidgetToken(Resource):
             "id": self.session._secret_key_id,
             "password": self.session._secret_key_password,
             "scopes": scopes,
+            "link": link,
         }
 
-        if link:
-            data.update(link=link)
-
-        return self.session.post(self.endpoint, data=data, raise_exception=raise_exception)
+        return self.session.post(self.endpoint, data=clean_none_values(data), raise_exception=raise_exception)

@@ -1,6 +1,7 @@
 from typing import Dict, List, Union
 
 from belvo.resources.base import Resource
+from belvo.utils import clean_none_values
 
 
 class Statements(Resource):
@@ -27,13 +28,11 @@ class Statements(Resource):
             "month": month,
             "attach_pdf": attach_pdf,
             "save_data": save_data,
+            "encryption_key": encryption_key
         }
 
-        if encryption_key:
-            data.update(encryption_key=encryption_key)
-
         return self.session.post(
-            self.endpoint, data=data, raise_exception=raise_exception, **kwargs
+            self.endpoint, data=clean_none_values(data), raise_exception=raise_exception, **kwargs
         )
 
     def resume(
